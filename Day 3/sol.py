@@ -10,7 +10,7 @@ todo = True
 with open("input.txt", 'r') as file:
 	str = file.read()
 
-reg = re.compile(r"mul\(([0-9]){1,3}\,([0-9]){1,3}\)|don\'t\(\)|do\(\)")
+reg = re.compile(r"mul\(\d+\,\d+\)|don\'t\(\)|do\(\)")
 
 while m := reg.search(str, pos):
 	pos = m.start() + 1
