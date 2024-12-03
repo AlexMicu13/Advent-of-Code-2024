@@ -1,6 +1,9 @@
 import re
+from functools import reduce
+from operator import mul
 
-s = 0
+s1 = 0
+s2 = 0
 pos = 0
 todo = True
 
@@ -17,8 +20,9 @@ while m := reg.search(str, pos):
 	elif m[0] == "do()":
 		todo = True
 		continue
-	elif todo:
-		nrs = list(map(int, re.findall(r'\d+', m[0])))
-		s += nrs[0] * nrs[1]
+	nr = reduce(mul, list(map(int, re.findall(r'\d+', m[0]))))
+	s1 += nr
+	if todo:
+		s2 += nr
 
-print(s)
+print(f"Answer 1: {s1}\nAnswer 2: {s2}")
