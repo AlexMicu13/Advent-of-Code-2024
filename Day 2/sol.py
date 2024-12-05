@@ -13,22 +13,22 @@ def is_safe(report: list[int]) -> bool:
 
 	return safed
 
-safe1 = 0
-safe2 = 0
+if __name__ == "__main__":
+	safe1 = 0
+	safe2 = 0
 
-with open("input.txt") as f:
-	for line in f:
-		report = list(map(int, line.strip().split()))
-		print(report)
-		if is_safe(report):
-			safe1 += 1
-			safe2 += 1
-		else:
-			for i in range(len(report)):
-				aux = report.copy()
-				aux.pop(i)
-				if is_safe(aux):
-					safe2 += 1
-					break
+	with open("input.txt") as f:
+		for line in f:
+			report = list(map(int, line.strip().split()))
+			if is_safe(report):
+				safe1 += 1
+				safe2 += 1
+			else:
+				for i in range(len(report)):
+					aux = report.copy()
+					aux.pop(i)
+					if is_safe(aux):
+						safe2 += 1
+						break
 
-print(f"Answer 1: {safe1}\nAnswer 2: {safe2}")
+	print(f"Answer 1: {safe1}\nAnswer 2: {safe2}")
