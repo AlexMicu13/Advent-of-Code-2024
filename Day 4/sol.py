@@ -7,7 +7,6 @@ def process_grid(file_path):
     pattern_S = ['A', 'M', 'X']
     apps1, apps2 = 0, 0
 
-    # Read the grid from the input file
     with open(file_path, 'r') as file:
         rows = file.read().splitlines()
 
@@ -41,6 +40,5 @@ def process_grid(file_path):
 
     return apps1, apps2
 
-# Run the processing and print results
 apps1, apps2 = process_grid("input.txt")
 print(apps1, apps2)
