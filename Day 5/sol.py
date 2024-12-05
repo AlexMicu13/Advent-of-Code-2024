@@ -1,11 +1,5 @@
 from collections import defaultdict
 
-adj = defaultdict(list)
-updates = []
-s1 = 0
-s2 = 0
-
-
 def validate_update(adj, update):
     for i in range(len(update) - 1):
         if update[i + 1] not in adj[update[i]]:
@@ -29,6 +23,10 @@ def fix_update(adj, update):
 
 
 if __name__ == "__main__":
+	adj = defaultdict(list)
+	updates = []
+	s1 = 0
+	s2 = 0
 	with open("input.txt", 'r') as file:
 		for line in file:
 			line = line.strip()
