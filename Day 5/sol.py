@@ -25,7 +25,6 @@ def fix_update(adj, update):
         if update[i + 1] in adj[fixed[-1]]:
             fixed.append(update[i + 1])
 
-    print(fixed)        
     return fixed
 
 
