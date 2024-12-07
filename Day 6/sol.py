@@ -1,6 +1,7 @@
 def is_in(pos: (int, int), m: int, n: int) -> bool:
     return 0 <= pos[0] < m and 0 <= pos[1] < n
 
+
 def simulate(map_obs, start_pos, m, n, dirs):
     visited = set()
     pos = start_pos
@@ -18,6 +19,7 @@ def simulate(map_obs, start_pos, m, n, dirs):
             visited.add(pos)
 
     return visited
+
 
 def simulate_with_obstacle(map_obs, start_pos, m, n, dirs, obstacle):
     visited = set()
@@ -51,7 +53,8 @@ if __name__ == "__main__":
 
     m, n = len(map_obs), len(map_obs[0])
     dirs = [(-1, 0), (0, 1), (1, 0), (0, -1)]
-    start_pos = next((i, j) for i in range(m) for j in range(n) if map_obs[i][j] == '^')
+    start_pos = next((i, j) for i in range(m)
+                     for j in range(n) if map_obs[i][j] == '^')
 
     visited = simulate(map_obs, start_pos, m, n, dirs)
 
@@ -62,4 +65,3 @@ if __name__ == "__main__":
                 possible += 1
 
     print(f"Answer 1: {len(visited)}\nAnswer 2: {possible}")
-

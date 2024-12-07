@@ -1,5 +1,6 @@
 from collections import defaultdict
 
+
 def validate_update(adj, update):
     for i in range(len(update) - 1):
         if update[i + 1] not in adj[update[i]]:
@@ -23,26 +24,26 @@ def fix_update(adj, update):
 
 
 if __name__ == "__main__":
-	adj = defaultdict(list)
-	updates = []
-	s1 = 0
-	s2 = 0
-	with open("input.txt", 'r') as file:
-		for line in file:
-			line = line.strip()
-			if '|' in line:
-				e1, e2 = map(int, line.split('|'))
-				adj[e1].append(e2)
-			elif ',' in line:
-				updates.append(list(map(int, line.split(','))))
+    adj = defaultdict(list)
+    updates = []
+    s1 = 0
+    s2 = 0
+    with open("input.txt", 'r') as file:
+        for line in file:
+            line = line.strip()
+            if '|' in line:
+                e1, e2 = map(int, line.split('|'))
+                adj[e1].append(e2)
+            elif ',' in line:
+                updates.append(list(map(int, line.split(','))))
 
-	for update in updates:
-		if not validate_update(adj, update):
-			fixed = fix_update(adj, update)
-			mid = fixed[len(fixed) // 2]
-			s2 += mid 
-		else:
-			mid = update[len(update) // 2]
-			s1 += mid
+    for update in updates:
+        if not validate_update(adj, update):
+            fixed = fix_update(adj, update)
+            mid = fixed[len(fixed) // 2]
+            s2 += mid
+        else:
+            mid = update[len(update) // 2]
+            s1 += mid
 
-	print(f"Answer 1: {s1}\nAnswer 2: {s2}")
+    print(f"Answer 1: {s1}\nAnswer 2: {s2}")
