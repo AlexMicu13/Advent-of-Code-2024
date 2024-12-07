@@ -40,7 +40,7 @@ def simulate_with_obstacle(map_obs, start_pos, m, n, dirs, obstacle):
         if not is_in(next_pos, m, n):
             if obstacle:
                 map_obs[obstacle[0]][obstacle[1]] = '.'
-            break
+                return False
         if map_obs[next_pos[0]][next_pos[1]] == '#':
             direction = (direction + 1) % 4
         else:
