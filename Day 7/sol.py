@@ -1,4 +1,4 @@
-def process_line(res, nrs, concat=False):
+def process_line(res, nrs, concat):
     partials = [nrs[0]]
     i = 1
 
