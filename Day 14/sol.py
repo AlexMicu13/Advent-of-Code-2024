@@ -11,6 +11,7 @@ if __name__ == "__main__":
     half_n = n // 2
     pos = []
     speeds = []
+    safety = []
 
     with open("input.txt", 'r') as f:
         for line in f:
@@ -24,8 +25,6 @@ if __name__ == "__main__":
     height = m * font_size
 
     for iter in range(n * m):
-        print(f"Iteration: {iter}")
-
         robots = [[0 for _ in range(n)] for _ in range(m)]
         quads = [0, 0, 0, 0]
 
@@ -43,16 +42,7 @@ if __name__ == "__main__":
             elif pos[i][0] > half_n and pos[i][1] > half_m:
                 quads[3] += 1
 
-        if iter == 99:
-            print(reduce(mul, quads))
+        safety.append(reduce(mul, quads))
 
-        image = Image.new("RGB", (width, height), "black")
-        draw = ImageDraw.Draw(image)
-
-        for y, row in enumerate(robots):
-            for x, val in enumerate(row):
-                if val > 0:
-                    draw.text((x * font_size, y * font_size),
-                              "X", fill="white", font=font)
-
-        image.save(f"images/{iter:06d}.png")
+    min_index = safety.index(min(safety))
+    print(f"Answer 1: {safety[99]}\nAnswer 2: {min_index + 1}")
